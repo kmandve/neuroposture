@@ -1,0 +1,340 @@
+:root {
+    --bg-dark: #050508;
+    --glass-bg: rgba(20, 20, 30, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --accent-primary: #00f3ff;
+    /* Cyan */
+    --accent-secondary: #bc13fe;
+    /* Purple */
+    --success: #00ff9d;
+    --warning: #ffb800;
+    --danger: #ff0055;
+    --text-main: #ffffff;
+    --text-muted: #8b8b9b;
+
+    --font-stack: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.08) 0%, transparent 40%);
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.dashboard-container {
+    width: 95vw;
+    /* height: 90vh; */
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Glass Panel Utility --- */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* --- Header --- */
+header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo h1 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.accent {
+    color: var(--accent-primary);
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--success);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.status-good {
+    color: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+.status-warning {
+    color: var(--warning);
+    border-color: var(--warning);
+    box-shadow: 0 0 10px rgba(255, 184, 0, 0.2);
+}
+
+.status-bad {
+    color: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+}
+
+/* --- Grid Layout --- */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    /* height: 100%; */
+    /* overflow: hidden; */
+}
+
+/* --- Camera Section --- */
+.camera-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feed-container {
+    flex: 1;
+    min-height: 500px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#camera-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.feed-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.reticle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.reticle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-primary);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* --- Controls --- */
+.controls-row {
+    display: flex;
+    gap: 15px;
+}
+
+.cyber-btn {
+    flex: 1;
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 16px;
+    border-radius: 10px;
+    font-family: var(--font-stack);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cyber-btn:hover {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+.cyber-btn.toggle {
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+    background: rgba(188, 19, 254, 0.1);
+}
+
+.cyber-btn.toggle:hover {
+    background: var(--accent-secondary);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+}
+
+/* --- Metrics Aside --- */
+.metrics-section {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* overflow-y: auto; */
+}
+
+.metrics-section h2 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.metric-header .value {
+    color: var(--accent-primary);
+    font-family: monospace;
+}
+
+.progress-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent-primary);
+    border-radius: 3px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Log Terminal --- */
+.info-terminal {
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-terminal h3 {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+#log-feed {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    /* Scroll from bottom */
+    gap: 4px;
+}
+
+.log-entry {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

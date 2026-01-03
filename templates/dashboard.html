@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posture Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="glass-panel">
+            <div class="logo">
+                <span class="pulse-dot" id="connection-dot"></span>
+                <h1>NEURO<span class="accent">POSTURE</span></h1>
+            </div>
+            <div class="status-badge" id="global-status">
+                Waiting...
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <main class="grid-layout">
+            
+            <!-- Camera Feed Section -->
+            <section class="camera-section glass-panel">
+                <div class="feed-container">
+                    <img src="/video_feed" alt="Camera Feed" id="camera-feed">
+                    <div class="feed-overlay">
+                        <div class="reticle"></div>
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+                <div class="controls-row">
+                    <button id="btn-calibrate" class="cyber-btn">
+                        <span class="icon">⌖</span> CALIBRATE
+                    </button>
+                    <button id="btn-voice" class="cyber-btn toggle">
+                        <span class="icon">🔊</span> <span id="voice-text">VOICE: ON</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Metrics Column -->
+            <aside class="metrics-section glass-panel">
+                <h2>REAL-TIME BIOMETRICS</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>SHOULDER LEVEL</span>
+                        <span class="value" id="val-shoulder">0.00</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="bar-shoulder" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>HEAD TILT</span>
+                        <span class="value" id="val-tilt">0.00</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="bar-tilt" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>HEAD DROP</span>
+                        <span class="value" id="val-drop">0.00</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="bar-drop" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="info-terminal">
+                    <h3>SYSTEM LOG</h3>
+                    <div id="log-feed">
+                        <div class="log-entry">> System initialized...</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>
