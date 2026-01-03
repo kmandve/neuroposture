@@ -1,28 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NeuroPosture - AI-Powered Posture Wellness Companion for macOS</title>
-    <meta name="description" content="Real-time posture monitoring with computer vision and AI voice coaching. Protect your long-term spinal health with NeuroPosture for macOS." />
-    <meta name="author" content="NeuroPosture" />
 
-    <meta property="og:title" content="NeuroPosture - AI-Powered Posture Wellness Companion" />
-    <meta property="og:description" content="Real-time posture monitoring with computer vision and AI voice coaching for macOS." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@NeuroPosture" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroPosture - AI Powered Wellness</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Note: Using simple unicode icons in implementation to avoid external dependencies blocking rendering -->
+</head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <h1>NEURO<span>POSTURE</span></h1>
+            </div>
+            <nav>
+                <a href="https://github.com/kmandve/neuroposture" class="btn btn-secondary" target="_blank">View
+                    Source</a>
+            </nav>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h2>Your AI-Powered<br>Posture Wellness Companion</h2>
+            <p>Real-time computer vision and gentle voice coaching to help you maintain long-term spinal health. Native
+                on macOS.</p>
+
+            <div class="cta-group">
+                <a href="https://github.com/kmandve/neuroposture" class="btn btn-primary" target="_blank">
+                    <span>⚡</span> Install via GitHub
+                </a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+
+            <!-- CSS-ONLY DASHBOARD PREVIEW MOCKUP -->
+            <div class="dashboard-preview">
+                <div class="preview-grid">
+                    <!-- Fake Camera Feed -->
+                    <div class="camera-feed-mock">
+                        <div class="skeleton-overlay"></div>
+                    </div>
+
+                    <!-- Fake Metrics Panel -->
+                    <div class="metrics-mock">
+                        <div class="logo" style="font-size: 0.8rem;">
+                            <h1>NEURO<span>POSTURE</span></h1>
+                        </div>
+
+                        <div class="metric-bar-mock">
+                            <div class="metric-label">
+                                <span>SHOULDER LEVEL</span>
+                                <span>0.002</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 5%; animation-duration: 3s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="metric-bar-mock">
+                            <div class="metric-label">
+                                <span>HEAD TILT</span>
+                                <span>0.015</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 12%; animation-duration: 4.5s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="metric-bar-mock">
+                            <div class="metric-label">
+                                <span>HEAD DROP</span>
+                                <span>0.008</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 8%; animation-duration: 3.8s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="logs-mock">
+                            > System Initialized<br>
+                            > Camera Feed Active<br>
+                            > AI Voice Coach: Ready
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES GRID -->
+        <section id="features" class="features">
+            <div class="feature-card glass-panel">
+                <span class="icon">👁️</span>
+                <h3>Real-Time Vision</h3>
+                <p>High-precision skeletal tracking using MediaPipe monitors shoulder level and head alignment 30 times
+                    per second.</p>
+            </div>
+
+            <div class="feature-card glass-panel">
+                <span class="icon">🧬</span>
+                <h3>AI Voice Coach</h3>
+                <p>Powered by OpenAI, get gentle, human-like voice reminders instead of robotic beeps when your posture
+                    drifts.</p>
+            </div>
+
+            <div class="feature-card glass-panel">
+                <span class="icon">🖥️</span>
+                <h3>Native macOS</h3>
+                <p>Lives quietly in your menu bar. Green means good, yellow means warning. It works even when the
+                    dashboard is closed.</p>
+            </div>
+
+            <div class="feature-card glass-panel">
+                <span class="icon">🔒</span>
+                <h3>Privacy First</h3>
+                <p>All video processing happens locally on your device. Only anonymized posture metrics are processed
+                    for feedback.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>NeuroPosture &copy; 2026. Open Source Project.</p>
+            <p style="margin-top: 1rem;"><a href="https://github.com/kmandve/neuroposture" target="_blank">GitHub
+                    Repository</a></p>
+        </footer>
+    </div>
+
+</body>
+
 </html>
