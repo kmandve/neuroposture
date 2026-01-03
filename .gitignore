@@ -213,4 +213,5 @@ arc
 dist
 .env
 PostureMonitor.spec
+.DS_Store
 
