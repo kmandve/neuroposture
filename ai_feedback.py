@@ -1,10 +1,20 @@
 from openai import OpenAI
-import dotenv
+from config_manager import get_api_key
 
-# Hardcoded API key
-API_KEY = dotenv.get_key('.env', 'OPENAI_API_KEY')
+# Load API key from config
+client = None
 
-client = OpenAI(api_key=API_KEY)
+def initialize_client():
+    global client
+    api_key = get_api_key()
+    if api_key:
+        try:
+            client = OpenAI(api_key=api_key)
+        except Exception as e:
+            print(f"Error initializing OpenAI client: {e}")
+
+# Try to initialize on import
+initialize_client()
 
 SYSTEM_PROMPT = """You are a gentle, caring posture wellness companion. 
 Your role is to give warm, encouraging reminders about posture - never commanding or intrusive.
@@ -15,6 +25,9 @@ Never use words like "must", "should", "need to", "stop", or "don't"."""
 
 def get_feedback(metrics, baseline):
     """Generate personalized feedback based on posture metrics."""
+    if not client:
+        return _get_fallback_feedback()
+
     if not metrics or not baseline:
         return "A posture check might feel great right now."
     

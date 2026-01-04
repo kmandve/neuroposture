@@ -126,6 +126,31 @@ def do_calibrate():
         state.set_baseline(mon.good_posture)
 
 if __name__ == "__main__":
+    # 0. Check for API Key & Startup Configuration
+    import ai_feedback
+    from config_manager import get_api_key, save_api_key
+    import rumps
+    
+    if not get_api_key():
+        # Needed because rumps.Window might need a run loop or just be blocking
+        # but for simple input prompt it often works directly or necessitates a simple app context
+        # We'll try a simple Window run. If it fails, we might need a full App structure, 
+        # but usually for configuration this is fine.
+        window = rumps.Window(
+            message="To enable AI posture feedback, please enter your OpenAI API Key.\nYou can find this at platform.openai.com",
+            title="Posture Monitor Configuration",
+            default_text="",
+            ok="Save Key",
+            cancel="Skip"
+        )
+        response = window.run()
+        if response.clicked:
+            save_api_key(response.text)
+            ai_feedback.initialize_client()
+            rumps.alert("Configuration", "API Key saved! AI features enabled.")
+        else:
+            rumps.alert("Configuration", "Proceeding without AI feedback.")
+
     # 1. Start Posture Monitor
     mon = get_monitor()
     mon.start()

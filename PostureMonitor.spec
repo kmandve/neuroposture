@@ -26,6 +26,8 @@ a = Analysis(
         'rumps',
         'edge_tts',
         'openai',
+        'config_manager',
+        'ai_feedback',
     ] + collect_submodules('mediapipe'),
     hookspath=[],
     hooksconfig={},
