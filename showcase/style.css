@@ -540,40 +540,129 @@ footer a {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero {
+        padding: 3rem 0;
+        min-height: auto;
+        /* Allow content to dictate height */
+    }
+
     .hero h2 {
         font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .btn {
         width: 100%;
         justify-content: center;
+        padding: 1rem;
+        /* Easier to tap */
     }
 
     .cta-group {
         flex-direction: column;
         width: 100%;
         gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Dashboard Mockup Mobile */
+    .dashboard-preview {
+        height: auto;
+        aspect-ratio: 9/16;
+        /* Portrait for mobile */
+        max-height: 500px;
     }
 
     .preview-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+        /* Camera on top, stats below */
+    }
+
+    .camera-feed-mock {
+        min-height: 200px;
     }
 
     .metrics-mock {
+        display: flex;
+        /* Show metrics on mobile now */
+        padding: 1rem;
+        gap: 1rem;
+        background: rgba(10, 10, 10, 0.9);
+    }
+
+    .metric-bar-mock:nth-child(n+3) {
         display: none;
+        /* Hide some metrics to save space */
     }
 
-    /* Hide metrics on tiny screens for mock */
-    .dashboard-preview {
-        height: 300px;
-    }
-
-    .solution-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    /* Sections */
+    section {
+        padding: 4rem 0;
     }
 
     .section-title {
         font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        /* Stack stats */
+        padding: 0;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+    }
+
+    .lead-text {
+        font-size: 1.2rem;
+        margin-top: -2rem;
+        margin-bottom: 3rem;
+    }
+
+    .solution-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .comparison-container {
+        padding: 1.5rem;
+        overflow-x: auto;
+        /* Scroll table if needed */
+    }
+
+    .comparison-table {
+        min-width: 500px;
+        /* Force scroll on small screens */
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    footer {
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
     }
 }
