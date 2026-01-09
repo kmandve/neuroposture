@@ -16,12 +16,11 @@ def initialize_client():
 # Try to initialize on import
 initialize_client()
 
-SYSTEM_PROMPT = """You are a gentle, caring posture wellness companion. 
-Your role is to give warm, encouraging reminders about posture - never commanding or intrusive.
+SYSTEM_PROMPT = """You are a nonintrusive posture wellness companion. 
+Your role is to give encouraging, natural reminders about posture - never commanding or intrusive.
 Keep responses to ONE short sentence (under 15 words).
-Be supportive and kind, like a caring friend noticing you might be uncomfortable.
-Never use words like "must", "should", "need to", "stop", or "don't"."""
-
+Be supportive and kind, like a caring friend, but keep it natural and direct.
+"""
 
 def get_feedback(metrics, baseline):
     """Generate personalized feedback based on posture metrics."""
@@ -29,7 +28,7 @@ def get_feedback(metrics, baseline):
         return _get_fallback_feedback()
 
     if not metrics or not baseline:
-        return "A posture check might feel great right now."
+        return "A posture check might be what you need right now."
     
     shoulder, tilt, drop = metrics
     b_shoulder, b_tilt, b_drop = baseline
@@ -42,11 +41,11 @@ def get_feedback(metrics, baseline):
     # Identify the main issue
     issues = []
     if d_shoulder > 0.02:
-        issues.append("shoulders are a bit uneven")
+        issues.append("shoulders are uneven")
     if d_tilt > 0.03:
-        issues.append("head is tilting slightly")
+        issues.append("head is tilting")
     if d_drop > 0.08:
-        issues.append("head is dropping forward a bit")
+        issues.append("head is dropping forward")
     
     issue_text = ", ".join(issues) if issues else "posture has drifted slightly"
     
@@ -58,7 +57,7 @@ def get_feedback(metrics, baseline):
                 {"role": "user", "content": f"The user's {issue_text}. Give a gentle, one-sentence reminder."}
             ],
             max_tokens=50,
-            temperature=0.8
+            temperature=0.7
         )
         return response.choices[0].message.content.strip()
     except Exception as e:

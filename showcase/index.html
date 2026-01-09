@@ -95,30 +95,111 @@
             </div>
         </section>
 
+        <!-- PROBLEM SECTION -->
+        <section class="section-problem reveal">
+            <h2 class="section-title">The Silent <span class="accent-text">Epidemic</span></h2>
+            <div class="stats-grid">
+                <div class="stat-card glass-panel reveal" style="transition-delay: 0.1s;">
+                    <span class="stat-number">80%</span>
+                    <p class="stat-desc">of people experience back pain at some point.</p>
+                    <span class="stat-source">Source: NIH</span>
+                </div>
+                <div class="stat-card glass-panel reveal" style="transition-delay: 0.2s;">
+                    <span class="stat-number">+40%</span>
+                    <p class="stat-desc">increase in spinal disc pressure from poor posture.</p>
+                    <span class="stat-source">Source: NIOSH</span>
+                </div>
+                <div class="stat-card glass-panel reveal" style="transition-delay: 0.3s;">
+                    <span class="stat-number">70%</span>
+                    <p class="stat-desc">prevalence of neck pain in office workers.</p>
+                    <span class="stat-source">Source: CDC</span>
+                </div>
+                <div class="stat-card glass-panel reveal" style="transition-delay: 0.4s;">
+                    <span class="stat-number">10lbs</span>
+                    <p class="stat-desc">extra force on neck per inch of head tilt.</p>
+                    <span class="stat-source">Source: Hansraj Study</span>
+                </div>
+                <div class="stat-card glass-panel reveal" style="transition-delay: 0.5s;">
+                    <span class="stat-number">-30%</span>
+                    <p class="stat-desc">reduced lung capacity in adolescents with poor posture.</p>
+                    <span class="stat-source">Source: WHO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTION SECTION -->
+        <section class="section-solution reveal">
+            <div class="solution-content">
+                <h2 class="section-title">The <span class="accent-text">Smart</span> Way to Sit</h2>
+                <p class="lead-text">Forget uncomfortable straps and expensive wearables.</p>
+                <div class="solution-grid">
+                    <div class="solution-text">
+                        <h3><span class="icon">✨</span> Zero Hardware Required</h3>
+                        <p>NeuroPosture uses the camera you already have. No dongles, no chargers, no uncomfortable
+                            straps digging into your shoulders.</p>
+
+                        <h3><span class="icon">🧠</span> Intelligent Analysis</h3>
+                        <p>Unlike simple strap-based correctors that just pull your shoulders back, our AI analyzes your
+                            entire skeletal structure to understand <em>why</em> you're slouching.</p>
+                    </div>
+                    <div class="comparison-container glass-panel">
+                        <h3>Why It's Better</h3>
+                        <div class="comparison-table">
+                            <div class="table-header">
+                                <div>Feature</div>
+                                <div>NeuroPosture</div>
+                                <div>Wearables</div>
+                            </div>
+                            <div class="table-row">
+                                <div>Cost</div>
+                                <div class="good">Free / Open Source</div>
+                                <div class="bad">$50 - $150+</div>
+                            </div>
+                            <div class="table-row">
+                                <div>Comfort</div>
+                                <div class="good">100% Invisible</div>
+                                <div class="bad">Intrusive / Sweaty</div>
+                            </div>
+                            <div class="table-row">
+                                <div>Charging</div>
+                                <div class="good">None</div>
+                                <div class="bad">Daily / Weekly</div>
+                            </div>
+                            <div class="table-row">
+                                <div>Feedback</div>
+                                <div class="good">Voice / Visual</div>
+                                <div class="bad">Vibration Only</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FEATURES GRID -->
         <section id="features" class="features">
-            <div class="feature-card glass-panel">
+            <div class="feature-card glass-panel reveal">
                 <span class="icon">👁️</span>
                 <h3>Real-Time Vision</h3>
                 <p>High-precision skeletal tracking using MediaPipe monitors shoulder level and head alignment 30 times
                     per second.</p>
             </div>
 
-            <div class="feature-card glass-panel">
+            <div class="feature-card glass-panel reveal" style="transition-delay: 0.1s;">
                 <span class="icon">🧬</span>
                 <h3>AI Voice Coach</h3>
                 <p>Powered by OpenAI, get gentle, human-like voice reminders instead of robotic beeps when your posture
                     drifts.</p>
             </div>
 
-            <div class="feature-card glass-panel">
+            <div class="feature-card glass-panel reveal" style="transition-delay: 0.2s;">
                 <span class="icon">🖥️</span>
                 <h3>Native macOS</h3>
                 <p>Lives quietly in your menu bar. Green means good, yellow means warning. It works even when the
                     dashboard is closed.</p>
             </div>
 
-            <div class="feature-card glass-panel">
+            <div class="feature-card glass-panel reveal" style="transition-delay: 0.3s;">
                 <span class="icon">🔒</span>
                 <h3>Privacy First</h3>
                 <p>All video processing happens locally on your device. Only anonymized posture metrics are processed
@@ -134,6 +215,25 @@
         </footer>
     </div>
 
+    <!-- INTERSECTION OBSERVER SCRIPT -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Optional, Tuple
 from voice import speak
 from ai_feedback import get_feedback
+import threading
 
 # ============================
 # CONFIG
@@ -66,8 +67,16 @@ class AppState:
             
             # Voice feedback when transitioning to bad
             if new_state == "bad" and self.can_speak():
-                feedback = get_feedback(self.metrics, self.baseline)
-                speak(feedback)
+                # Launch in thread since get_feedback is blocking (OpenAI API)
+                threading.Thread(target=self._dispatch_feedback, daemon=True).start()
+
+    def _dispatch_feedback(self):
+        """Helper to run blocking AI call in background"""
+        try:
+            feedback = get_feedback(self.metrics, self.baseline)
+            speak(feedback)
+        except Exception as e:
+            print(f"Feedback thread error: {e}")
 
     # ------------------------
     # Baseline handling

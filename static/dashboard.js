@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'good': { text: 'OPTIMAL', class: 'status-good' },
         'warning': { text: 'WARNING', class: 'status-warning' },
         'bad': { text: 'CRITICAL', class: 'status-bad' },
-        'uncalibrated': { text: 'UNCALIBRATED', class: 'status-warning' }
+        'uncalibrated': { text: 'UNCALIBRATED', class: 'status-uncalibrated' }
     };
 
     function addLog(msg) {
@@ -69,9 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
         valDrop.innerText = Math.abs(dDrop).toFixed(3);
 
         // Color coding bars - green when close to baseline, red when far
-        barShoulder.style.backgroundColor = pShoulder > 70 ? 'var(--danger)' : 'var(--accent-primary)';
-        barTilt.style.backgroundColor = pTilt > 70 ? 'var(--danger)' : 'var(--accent-primary)';
-        barDrop.style.backgroundColor = pDrop > 70 ? 'var(--danger)' : 'var(--accent-primary)';
+        // Color coding bars
+        // Helper to toggle danger class
+        const setStatus = (el, isBad) => {
+            if (isBad) el.classList.add('danger');
+            else el.classList.remove('danger');
+            el.style.backgroundColor = ''; // Clear inline if present
+        };
+
+        setStatus(barShoulder, pShoulder > 70);
+        setStatus(barTilt, pTilt > 70);
+        setStatus(barDrop, pDrop > 70);
     }
 
     async function fetchStatus() {
